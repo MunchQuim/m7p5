@@ -1,14 +1,13 @@
 <?php
-// Función para actualizar un usuario en el archivo JSON con dos 
-alternativas
+// Función para actualizar un usuario en el archivo JSON con dos alternativas
 function updateUser($id, $newName, $newPassword, $newMail) {
-    if (!file_exists('data/users.json')) {
+    if (!file_exists('../data/users.json')) {
         echo "El archivo de datos no existe.";
         return;
     }
 
 
- $users = json_decode(file_get_contents('data/users.json'), true) ??[];
+ $users = json_decode(file_get_contents('../data/users.json'), true) ??[];
  
 
  // Opción 1: Usando array_column y array_search para encontrar el índice del usuario
@@ -16,9 +15,9 @@ function updateUser($id, $newName, $newPassword, $newMail) {
  if ($userIndex !== false) { // Si el usuario existe
  $users[$userIndex]['name'] = $newName; 
  $users[$userIndex]['password'] = $newPassword;
- $users[$userIndex]['email'] = $newEmail; 
+ $users[$userIndex]['email'] = $newMail; 
  // Guardar los cambios en el archivo JSON
- file_put_contents('data/users.json', json_encode($users, JSON_PRETTY_PRINT));
+ file_put_contents('../data/users.json', json_encode($users, JSON_PRETTY_PRINT));
  echo "Usuario actualizado."; 
  } else { 
  echo "Usuario no encontrado."; 
@@ -32,7 +31,7 @@ function updateUser($id, $newName, $newPassword, $newMail) {
  $users[$index]['email'] = $newEmail;
  
  // Guardar los cambios en el archivo JSON
- file_put_contents('data/users.json', json_encode($users, 
+ file_put_contents('../data/users.json', json_encode($users, 
 JSON_PRETTY_PRINT));
  echo "Usuario actualizado.";
  return; // Finalizar la función después de actualizar
