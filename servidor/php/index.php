@@ -27,8 +27,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" href="../../Cliente/index.css">
-<!--     <script src="../../Cliente/basicoForm.js" defer></script>
-    <script src="../../Cliente/eventos.js" defer></script> -->
+    <script src="../js/indexForm.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +43,6 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
                 echo "<h1> Bienvenido! </h1>";
                 echo '<nav><a href="#" id="crear-sesion-link">Crear sesión</a>
                  <a href="#" id="iniciar-sesion-link">Iniciar sesión</a></nav>';
-
             }
             ?>
 
@@ -52,12 +50,6 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     </header>
     <main>
         <div id="form-container" class="hidden">
-
-        </div>
-        <div id="buttons-container">
-            <h2>Selecciona una opción</h2>
-            <button id="ver-resultados">Ver tus resultados</button>
-            <button id="hacer-prueba">Hacer la prueba</button>
         </div>
     </main>
 </body>
