@@ -4,6 +4,8 @@
 // Al inicio de cada página protegida, verifica la expiración de sesión
 session_start(); // Iniciar la sesión para verificar
 
+
+
 if (isset($_SESSION['LAST_ACTIVITY'])) {
     if (time() - $_SESSION['LAST_ACTIVITY'] > 1800) { // si han pasado mas de 1800 segundos desde la ultima conexion, se destruye la sesion
         // Si ha pasado más tiempo que el permitido, destruir la sesión
@@ -16,6 +18,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     // Actualizar el tiempo de última actividad
     $_SESSION['LAST_ACTIVITY'] = time();
 }
+
 
 
 ?>
@@ -54,12 +57,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     </main>
 </body>
 <script>
-    const isLoggedIn = <?php echo json_encode(isset($_SESSION['username'])); ?>;
 
-    /*  window.addEventListener('beforeunload', function () {
-         // Envia una solicitud al servidor para cerrar la sesión
-         navigator.sendBeacon('logout.php');
-     }); */
 </script>
 
 
