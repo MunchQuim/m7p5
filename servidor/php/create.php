@@ -5,16 +5,17 @@ function createUser($name, $email) {
     $newUser = [ 
     "id" => uniqid(),
     "name" => $name, 
-    "email" => $email, 
+    "password" => $password,
+    "mail" => $mail, 
     "role" => "user"
+    "emotion" => "[]"
     ];
     $users[] = $newUser; // Agregar el nuevo usuario a la lista
     
-    file_put_contents('data/users.json', json_encode($users, 
-   JSON_PRETTY_PRINT)); // Guardar la lista actualizada
+    file_put_contents('data/users.json', json_encode($users, JSON_PRETTY_PRINT)); // Guardar la lista actualizada
     return $newUser; 
    } 
    // Ejemplo de uso:
-   $newUser = createUser("Juan", "juan@example.com");
+   $newUser = createUser("newuser", "pass1234", "newuser@example.com");
    echo "Usuario creado: " . json_encode($newUser);
 ?>
