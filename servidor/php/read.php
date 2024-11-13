@@ -44,7 +44,7 @@ function getAdminTest($username, $password)
 {
 
     if (!file_exists('../data/users.json')) {
-        return null;
+        return [];
     }
     $usuarios = json_decode(file_get_contents('../data/users.json'),true);//lo convierto a array
     // Filtrar usuarios para buscar el nombre de usuario
@@ -60,11 +60,11 @@ function getAdminTest($username, $password)
         if ($password == $usuarioEncontrado['password']) {
             return $usuarioEncontrado;
         } else {
-            return null;
+            return [];
 
         }
     } else {
-        return null;
+        return [];
     }
 
 
