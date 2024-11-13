@@ -1,6 +1,6 @@
 <?php
 // Función para actualizar un usuario en el archivo JSON con dos alternativas
-function updateUser($id, $newName, $newPassword, $newMail) {
+function updateUser($id, $newName, $newPassword, $newMail, $newRole, $newEmotions) {
     if (!file_exists('../data/users.json')) {
         echo "El archivo de datos no existe.";
         return;
@@ -15,7 +15,13 @@ function updateUser($id, $newName, $newPassword, $newMail) {
  if ($userIndex !== false) { // Si el usuario existe
  $users[$userIndex]['name'] = $newName; 
  $users[$userIndex]['password'] = $newPassword;
- $users[$userIndex]['email'] = $newMail; 
+ $users[$userIndex]['mail'] = $newMail; 
+ $users[$userIndex]['role'] = $newRole; 
+ $users[$userIndex]['emotions'] = $newEmotions; 
+
+ 
+
+
  // Guardar los cambios en el archivo JSON
  file_put_contents('../data/users.json', json_encode($users, JSON_PRETTY_PRINT));
  echo "Usuario actualizado."; 
@@ -41,5 +47,5 @@ JSON_PRETTY_PRINT));
  ****************************************************************/
 } 
 // Ejemplo de uso para las dos alternativas:
-updateUser("ID_DEL_USUARIO", "NuevoUsuario", "nuevaContraseña", "nuevoemail@example.com");
+
  ?>

@@ -48,12 +48,15 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
                  <a href="#" id="iniciar-sesion-link">Iniciar sesión</a></nav>';
             }
             ?>
+            
 
         </div>
     </header>
     <main>
         <div id="form-container" class="hidden">
         </div>
+        <!-- cuerpo -->
+         
     </main>
 </body>
 <script>

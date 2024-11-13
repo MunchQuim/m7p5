@@ -9,6 +9,7 @@ function deleteUser($id) {
  $users = json_decode(file_get_contents('../data/users.json'), true) ?? [];
  // Buscar el índice del usuario que queremos eliminar
  $userIndex = array_search($id, array_column($users, 'id'));
+
  if ($userIndex !== false) { // Si el usuario existe
  unset($users[$userIndex]); // Eliminar el usuario del array
  $users = array_values($users); // Reindexar el array
@@ -21,6 +22,4 @@ function deleteUser($id) {
 }
 }
 
-// Ejemplo de uso:
-deleteUser("ID_DEL_USUARIO");
 ?>
