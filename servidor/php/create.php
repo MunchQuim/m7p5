@@ -4,7 +4,7 @@ function createUser($name, $password, $email) {
     
     $newUser = [ 
     "id" => uniqid(),
-    "name" => $name, 
+    "username" => $name, 
     "password" => $password,
     "mail" => $email, 
     "role" => "user",

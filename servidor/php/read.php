@@ -18,7 +18,7 @@ function getUser($username, $password)
         return [];
 
     }
-    $usuarios = json_decode(file_get_contents('../data/users.json'));//lo convierto a array
+    $usuarios = json_decode(file_get_contents('../data/users.json'),true);//lo convierto a array
 
     // Filtrar usuarios para buscar el nombre de usuario
     $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($username) {
@@ -68,6 +68,57 @@ function getAdminTest($username, $password)
     }
 
 
+}
+
+function getUserById($id)
+{
+    /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
+
+    if (!file_exists('../data/users.json')) {
+        return [];
+
+    }
+    $usuarios = json_decode(file_get_contents('../data/users.json'));//lo convierto a array
+
+    // Filtrar usuarios para buscar el nombre de usuario
+    $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($id) {
+        return $usuario['id'] === $id;
+    });
+
+    // Comprobar si hay usuarios filtrados
+    if (!empty($usuariosFiltrados)) {
+        // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
+        $usuarioEncontrado = reset($usuariosFiltrados);
+        return $usuarioEncontrado['username']; //por ahora solo devuelvo el nombre
+        
+    } else {
+        return [];
+    }
+}
+function isUserByName($username)
+{
+    /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
+
+    if (!file_exists('../data/users.json')) {
+        return null;
+
+    }
+    $usuarios = json_decode(file_get_contents('../data/users.json'),true);//lo convierto a array
+
+    // Filtrar usuarios para buscar el nombre de usuario
+    $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($username) {
+        return $usuario['username'] === $username;
+    });
+
+    // Comprobar si hay usuarios filtrados
+    if (!empty($usuariosFiltrados)) {
+        // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
+        $usuarioEncontrado = reset($usuariosFiltrados);
+        return true; //por ahora solo devuelvo el nombre
+        
+    } else {
+        return false;
+    }
 }
 
 /* // Ejemplo de uso:

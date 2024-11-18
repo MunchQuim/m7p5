@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuarios = json_decode($jsonContent, true); */
 
         // llamar al crud, read(username, password) y si hay devolucion
-        $response = getAdminTest($username, $password); // por ahora es esta funcion para comprobar que puede iniciar sesion que no tiene la contraseña encriptada
+        $response = getUser($username, $password); // por ahora es esta funcion para comprobar que puede iniciar sesion que no tiene la contraseña encriptada
         // Comprobar si hay devolucion
         if (!empty($response)) {
             // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)

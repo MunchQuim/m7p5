@@ -1,8 +1,10 @@
-[{
-    "id": "1",
-    "username": "admin",
-    "password": "1234",
-    "mail": "admin@gmail.com",
-    "role": "admin",
-    "emotions" : []
-}]
+[
+    {
+        "id": "673b5e6e2abd8",
+        "username": "admin",
+        "password": "$2y$10$GtYag.dw5CfOKJ0hnYCsbeJaYsPEQmt\/KbM86oTXwophA\/QwMptiu",
+        "mail": "admin@gmail.com",
+        "role": "admin",
+        "emotion": []
+    }
+]
