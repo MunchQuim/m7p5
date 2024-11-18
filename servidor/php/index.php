@@ -19,6 +19,18 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     $_SESSION['LAST_ACTIVITY'] = time();
 }
 
+if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == "admin") {
+        // Redireccionar a index.php
+        header('Location: gestion.php');
+        exit(); // Asegúrate de llamar a exit después de redirigir
+    } elseif ($_SESSION['role'] == "user") {
+        header('Location: dashboard.php');
+        exit(); // Asegúrate de llamar a exit después de redirigir
+    }
+}
+
+
 
 
 ?>
@@ -48,7 +60,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
                  <a href="#" id="iniciar-sesion-link">Iniciar sesión</a></nav>';
             }
             ?>
-            
+
 
         </div>
     </header>
@@ -56,7 +68,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
         <div id="form-container" class="hidden">
         </div>
         <!-- cuerpo -->
-         
+
     </main>
 </body>
 <script>

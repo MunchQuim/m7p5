@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id'] = $response['id'];
             $_SESSION['role'] = $response['role'];
             $_SESSION['LAST_ACTIVITY'] = time();
-
+            
             // Redireccionar a index.php
             header('Location: index.php');
             exit(); // Asegúrate de llamar a exit después de redirigir
