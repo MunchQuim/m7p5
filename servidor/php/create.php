@@ -8,7 +8,7 @@ function createUser($name, $password, $email) {
     "password" => $password,
     "mail" => $email, 
     "role" => "user",
-    "emotion" => []
+    "emotion" => ""
     ];
     $users[] = $newUser; // Agregar el nuevo usuario a la lista
     

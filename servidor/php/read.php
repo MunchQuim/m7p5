@@ -89,6 +89,31 @@ function getUserById($id)
     if (!empty($usuariosFiltrados)) {
         // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
         $usuarioEncontrado = reset($usuariosFiltrados);
+        return $usuarioEncontrado; //por ahora solo devuelvo el nombre
+        
+    } else {
+        return [];
+    }
+}
+function getUserNameById($id)
+{
+    /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
+
+    if (!file_exists('../data/users.json')) {
+        return [];
+
+    }
+    $usuarios = json_decode(file_get_contents('../data/users.json'));//lo convierto a array
+
+    // Filtrar usuarios para buscar el nombre de usuario
+    $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($id) {
+        return $usuario['id'] === $id;
+    });
+
+    // Comprobar si hay usuarios filtrados
+    if (!empty($usuariosFiltrados)) {
+        // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
+        $usuarioEncontrado = reset($usuariosFiltrados);
         return $usuarioEncontrado['username']; //por ahora solo devuelvo el nombre
         
     } else {
@@ -136,17 +161,20 @@ foreach ($users as $user) {
     if (!file_exists('../data/songs.json')) {
         return [];
     }
-    $allSongs = json_decode(file_get_contents('../data/songs.json'));//lo convierto a array
+    $allSongs = json_decode(file_get_contents('../data/songs.json'), true);//lo convierto a array
 
     // Filtrar usuarios para buscar el nombre de usuario
-    $filteredSongs = array_filter($allSongs, function ($song) use ($emotion) {
-        return $song['emotion'] === $emotion;
-    });
-    
-    return $filteredSongs;  // devuelve todas las caciones con esa emocion
+    $filteredSongs = [];
+    foreach ($allSongs as $songs) {
+        if($songs["emotion"] == $emotion){
+            $filteredSongs[] = $songs;//añado la song al array;
+        }
+    };
+    return $filteredSongs;  // devuelve todas las caciones con esa emocion 
    
 }
 if (isset($_GET['emotion'])) {
+    
     $emotion = htmlspecialchars($_GET['emotion']);
     // Obtener las canciones para esa emoción
     $songs = getSongsByEmotion($emotion);

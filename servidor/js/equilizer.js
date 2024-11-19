@@ -26,54 +26,70 @@ let ctx = canvas.getContext('2d');
 
 async function enseñarCanciones(emotion) {
 
-    let response = await fetch(`../php/read.php?emotion=${encodeURIComponent(emotion)}`);//puedo hacer un fetch sobre la consulta.php
-    console.log(response);
-    playList = await response.json();
+    try {
+        let response = await fetch(`http://localhost/practica5/servidor/php/read.php?emotion=${encodeURIComponent(emotion)}`);
 
-/*     let response = await fetch('../data/songs.json');
-    playList = await response.json(); */
+        // Verificar si la respuesta fue exitosa (status HTTP 200)
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        // Intentar convertir la respuesta en JSON
+        playList = await response.json();
+
+        // Verificar si la respuesta contiene un error
+        if (playList.error) {
+            console.error(playList.error);
+            // Aquí puedes manejar el caso de error, como mostrar un mensaje al usuario
+        } else {
+            let songList = document.getElementById("songList");
+
+            playList.forEach(song => {
+                let songDiv = document.createElement("img");
+                songDiv.innerText = song["image"];
+                songDiv.src = song["image"];
+                songDiv.setAttribute('data-index', playList.indexOf(song))
+                songDiv.addEventListener("click", () => {
+                    //pone la foto
+                    ponerFoto(song["image"]);
+                    // carga la cancion
+                    loadSongs(song["src"], song["image"]);
+                    // crea los inputs
+                    crearInputs(song["title"], song["artist"]);
+                    // cambio el numero de la track
+                    currentTrack = event.currentTarget.getAttribute('data-index');
+                    console.log(currentTrack);
+        
+                    howler.play();
+        
+                }, false)
+                songList.appendChild(songDiv);
+            });
+            let shuffleBtn = document.createElement("button");
+            shuffleBtn.id = "shuffleBtn";
+            shuffleBtn.innerText = "Mezcla";
+            shuffleBtn.addEventListener("click", () => {
+                
+                //su no funciona es porque he tocado esto
+                playList = shuffle(playList);
+                //reorganizar
+                reorganizar(playList);
+            }, false)
+        
+            document.getElementById("sideFooter").appendChild(shuffleBtn);
+        }
+    } catch (error) {
+        console.error("Error al obtener canciones: ", error);
+        // Puedes mostrar un mensaje de error en la interfaz de usuario si ocurre algún problema
+    }
     
-    let songList = document.getElementById("songList");
-
-    playList.forEach(song => {
-        let songDiv = document.createElement("img");
-        songDiv.innerText = song["image"];
-        songDiv.src = song["image"];
-        songDiv.setAttribute('data-index', playList.indexOf(song))
-        songDiv.addEventListener("click", () => {
-            //pone la foto
-            ponerFoto(song["image"]);
-            // carga la cancion
-            loadSongs(song["src"], song["image"]);
-            // crea los inputs
-            crearInputs(song["title"], song["artist"]);
-            // cambio el numero de la track
-            currentTrack = event.currentTarget.getAttribute('data-index');
-            console.log(currentTrack);
-
-            howler.play();
-
-        }, false)
-        songList.appendChild(songDiv);
-    });
-    let shuffleBtn = document.createElement("button");
-    shuffleBtn.id = "shuffleBtn";
-    shuffleBtn.innerText = "Mezcla";
-    shuffleBtn.addEventListener("click", () => {
-        shuffle(playList);
-        //reorganizar
-
-        reorganizar(playList);
-    }, false)
-
-    document.getElementById("sideFooter").appendChild(shuffleBtn);
 }
 //reorganizar pistas
-function reorganizar(playlist) {
+function reorganizar(pPlaylist) {
     let songList = document.getElementById("songList");
     songList.innerHTML = "";
 
-    playList.forEach(song => {
+    pPlaylist.forEach(song => {
         let songDiv = document.createElement("img");
         songDiv.innerText = song["image"];
         songDiv.src = song["image"];
@@ -108,17 +124,17 @@ const loadSongs = async (pSrc, image) => {
             bassFilter = Howler.ctx.createBiquadFilter();
             bassFilter.type = 'lowshelf';
             bassFilter.frequency.value = 300; // lo digo que sean los bajos, y que la frecuencia es de 300
-        
+
             //filtro para agudos
             trebleFilter = Howler.ctx.createBiquadFilter();
-            trebleFilter.type = 'highshelf'; 
+            trebleFilter.type = 'highshelf';
             trebleFilter.frequency.value = 3000;
-        
+
             //lo tengo que conectar
             howler._sounds[0]._node.connect(bassFilter);
             bassFilter.connect(trebleFilter);
             trebleFilter.connect(gainNode); //lo que no se es por que se tiene que hacer un trenecito
-        
+
             gainNode.connect(Howler.ctx.destination);
         },
         onload: function () {
@@ -141,8 +157,8 @@ const loadSongs = async (pSrc, image) => {
     bufferLength = analyser.frequencyBinCount; //Indica el número de muestras de datos que se obtendrán del audio.
     dataArray = new Uint8Array(bufferLength);
 
-    
- 
+
+
 
 
     loadEqualizer();
@@ -154,7 +170,7 @@ const loadSongs = async (pSrc, image) => {
 let radios = [{
     "src": "https://20853.live.streamtheworld.com/CADENASERAAC.aac",
     "canal": "Catalunya Radio",
-    "image": "./imgs/catRadio.png"
+    "image": "../imgs/catRadio.png"
 }];
 async function enseñarRadios() {
 
@@ -169,7 +185,7 @@ async function enseñarRadios() {
         radioDiv.innerText = radio['tittle'];
         radioDiv.setAttribute('data-index', radios['radios'].indexOf(radio))
         radioDiv.addEventListener("click", () => {
-            ponerFoto("./imgs/radio.png");
+            ponerFoto("../imgs/radio.png");
             loadRadios(radio['src']);
         }, false)
         radioList.appendChild(radioDiv);
@@ -284,7 +300,7 @@ function animateEqualizer(color) {
         ctx.lineWidth = 2; // Grosor de la línea
         ctx.strokeStyle = color; // Cambia el color del trazo
         ctx.stroke(); // Dibuja la línea // el fill Style no sirve para estas barras.
-        
+
         total += barHeight;
         if (barHeight > maximoTotal) {
             maximoTotal = barHeight;
@@ -391,7 +407,7 @@ function crearInputs(title, artist) {
     // la etiqueta del volumen
     const volumeImg = document.createElement("img");
     volumeImg.id = "volumeImg";
-    volumeImg.src = "./imgs/alto-volumen.png";
+    volumeImg.src = "../imgs/alto-volumen.png";
     volumeContainer.appendChild(volumeImg);
 
     padre.appendChild(volumeContainer);
@@ -457,7 +473,7 @@ function crearInputs(title, artist) {
     //atras
     const backButton = document.createElement("img");
     backButton.id = "atras";
-    backButton.src = "./imgs/backwards.png";
+    backButton.src = "../imgs/backwards.png";
     backButton.alt = "Atrás";
     buttonContainer.appendChild(backButton);
     //pausa
@@ -469,7 +485,7 @@ function crearInputs(title, artist) {
     //adelante
     const forwardButton = document.createElement("img");
     forwardButton.id = "adelante";
-    forwardButton.src = "./imgs/backwards.png";
+    forwardButton.src = "../imgs/backwards.png";
     forwardButton.alt = "Adelante";
     buttonContainer.appendChild(forwardButton);
     barrasContainer.appendChild(buttonContainer);
@@ -543,7 +559,7 @@ function crearInputs(title, artist) {
 async function cambiarPista(number) {
     howler.stop();
     /* 
-        let response = await fetch('./jsons/songsData.json'); */
+        let response = await fetch('../jsons/songsData.json'); */
 
     let song = playList[number]
 
@@ -624,14 +640,14 @@ function changePitch(rate) {
     const imagen = document.getElementById("imagen");
     let velocidad = 10 / rate;
     console.log(velocidad);
-/*     document.getElementById("imagen").style.animationPlayState = "paused";
-    document.getElementById("imagen").style.animationDuration = velocidad+"s";
-    document.getElementById("imagen").style.animationPlayState = "running"; */
+    /*     document.getElementById("imagen").style.animationPlayState = "paused";
+        document.getElementById("imagen").style.animationDuration = velocidad+"s";
+        document.getElementById("imagen").style.animationPlayState = "running"; */
     howler.rate(rate);
 
 }
 function changeBajos(bajo) {
-    let bassValue = parseFloat(bajo); 
+    let bassValue = parseFloat(bajo);
     bassFilter.gain.value = bassValue * 20; // cambia -20 +20 db las frecuencias bajas
     console.log(bassFilter);
 }
@@ -643,4 +659,4 @@ function changeAltos(alto) {
 
 // On Load
 /* loadSongs(); */
-enseñarCanciones("Triste");
+enseñarCanciones(animo);

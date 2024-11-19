@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['username'] = $response['username'];
             $_SESSION['id'] = $response['id'];
             $_SESSION['role'] = $response['role'];
+            $_SESSION['emotion'] = $response['emotion'];
             $_SESSION['LAST_ACTIVITY'] = time();
             
             // Redireccionar a index.php
