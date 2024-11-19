@@ -42,9 +42,9 @@
         </div>
     </main>
     <div id="social-media">
-        <a href="https://www.linkedin.com/in/joaquimpineda" target="_blank"><img src="./imgs//linkedin.png"
+        <a href="https://www.linkedin.com/in/joaquimpineda" target="_blank"><img src="../imgs//linkedin.png"
                 alt="linkedin"></a>
-        <a href="https://github.com/MunchQuim?tab=repositories" target="_blank"><img src="./imgs//github.png"
+        <a href="https://github.com/MunchQuim?tab=repositories" target="_blank"><img src="../imgs//github.png"
                 alt="linkedin"></a>
     </div>
 

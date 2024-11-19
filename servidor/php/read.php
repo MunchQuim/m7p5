@@ -136,17 +136,20 @@ foreach ($users as $user) {
     if (!file_exists('../data/songs.json')) {
         return [];
     }
-    $allSongs = json_decode(file_get_contents('../data/songs.json'));//lo convierto a array
+    $allSongs = json_decode(file_get_contents('../data/songs.json'), true);//lo convierto a array
 
     // Filtrar usuarios para buscar el nombre de usuario
-    $filteredSongs = array_filter($allSongs, function ($song) use ($emotion) {
-        return $song['emotion'] === $emotion;
-    });
-    
-    return $filteredSongs;  // devuelve todas las caciones con esa emocion
+    $filteredSongs = [];
+    foreach ($allSongs as $songs) {
+        if($songs["emotion"] == $emotion){
+            $filteredSongs[] = $songs;//añado la song al array;
+        }
+    };
+    return $filteredSongs;  // devuelve todas las caciones con esa emocion 
    
 }
 if (isset($_GET['emotion'])) {
+    
     $emotion = htmlspecialchars($_GET['emotion']);
     // Obtener las canciones para esa emoción
     $songs = getSongsByEmotion($emotion);
