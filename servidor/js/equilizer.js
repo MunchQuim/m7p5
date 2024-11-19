@@ -25,6 +25,7 @@ let ctx = canvas.getContext('2d');
 
 
 async function enseñarCanciones(emotion) {
+
     try {
         let response = await fetch(`http://localhost/practica5/servidor/php/read.php?emotion=${encodeURIComponent(emotion)}`);
 
@@ -34,7 +35,7 @@ async function enseñarCanciones(emotion) {
         }
 
         // Intentar convertir la respuesta en JSON
-        let playList = await response.json();
+        playList = await response.json();
 
         // Verificar si la respuesta contiene un error
         if (playList.error) {
@@ -68,9 +69,10 @@ async function enseñarCanciones(emotion) {
             shuffleBtn.id = "shuffleBtn";
             shuffleBtn.innerText = "Mezcla";
             shuffleBtn.addEventListener("click", () => {
-                shuffle(playList);
+                
+                //su no funciona es porque he tocado esto
+                playList = shuffle(playList);
                 //reorganizar
-        
                 reorganizar(playList);
             }, false)
         
@@ -83,11 +85,11 @@ async function enseñarCanciones(emotion) {
     
 }
 //reorganizar pistas
-function reorganizar(playlist) {
+function reorganizar(pPlaylist) {
     let songList = document.getElementById("songList");
     songList.innerHTML = "";
 
-    playList.forEach(song => {
+    pPlaylist.forEach(song => {
         let songDiv = document.createElement("img");
         songDiv.innerText = song["image"];
         songDiv.src = song["image"];
@@ -657,4 +659,4 @@ function changeAltos(alto) {
 
 // On Load
 /* loadSongs(); */
-enseñarCanciones("Triste");
+enseñarCanciones(animo);

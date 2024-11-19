@@ -5,7 +5,7 @@
         "password": "$2y$10$GtYag.dw5CfOKJ0hnYCsbeJaYsPEQmt\/KbM86oTXwophA\/QwMptiu",
         "mail": "admin@gmail.com",
         "role": "admin",
-        "emotion": []
+        "emotion": ""
     },
     {
         "id": "673b669e1afc0",
@@ -13,6 +13,6 @@
         "password": "$2y$10$v3v41xwIKP4atFh52Vm7oO9FhTMZvpNxBQ2qv7khv9.O9EkxegW3m",
         "mail": "user@gmail.com",
         "role": "user",
-        "emotion": []
+        "emotion": "Triste"
     }
 ]
