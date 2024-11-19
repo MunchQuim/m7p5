@@ -1,5 +1,7 @@
 <?php
 // Función para actualizar un usuario en el archivo JSON con dos alternativas
+
+
 function updateUser($id, $newName, $newPassword, $newMail, $newRole, $newEmotions) {
     if (!file_exists('../data/users.json')) {
         echo "El archivo de datos no existe.";
