@@ -128,4 +128,41 @@ foreach ($users as $user) {
         " - Role: " . $user['role'] . " - Emotions: " . json_encode($user['emotions']) . "<br>";
 }
  */
+
+ function getSongsByEmotion($emotion)
+{
+    /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
+
+    if (!file_exists('../data/songs.json')) {
+        return [];
+    }
+    $allSongs = json_decode(file_get_contents('../data/songs.json'));//lo convierto a array
+
+    // Filtrar usuarios para buscar el nombre de usuario
+    $filteredSongs = array_filter($allSongs, function ($song) use ($emotion) {
+        return $song['emotion'] === $emotion;
+    });
+    
+    return $filteredSongs;  // devuelve todas las caciones con esa emocion
+   
+}
+if (isset($_GET['emotion'])) {
+    $emotion = htmlspecialchars($_GET['emotion']);
+    // Obtener las canciones para esa emoción
+    $songs = getSongsByEmotion($emotion);
+   
+    // Establecer encabezado de respuesta para indicar que la respuesta es JSON
+    header('Content-Type: application/json');
+
+    if (!empty($songs)) {
+        echo json_encode($songs);
+    } else {
+        echo json_encode(['error' => 'No se encontraron canciones para esta emoción']);
+    }
+} else {
+    // Si no se proporciona emoción, responder con un error o con todas las canciones
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Emoción no especificada']);
+}
+
 ?>

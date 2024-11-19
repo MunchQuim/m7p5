@@ -75,6 +75,8 @@ if (isset($_SESSION['role'])) {
             </div>
             <button type="submit">Actualizar estado de ánimo</button>
         </form>
+        <!-- Todo este formulario lo has de crear sin php, al pulsar submit debe llamar a updateUser($id, $newName, $newPassword, $newMail, $newRole, $newEmotions) --> 
+         <!-- los datos se recogen de la sesion excepto emociones que se recoje del mood -->
     </main>
 </body>
 <script>
