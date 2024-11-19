@@ -78,7 +78,7 @@ function getUserById($id)
         return [];
 
     }
-    $usuarios = json_decode(file_get_contents('../data/users.json'));//lo convierto a array
+    $usuarios = json_decode(file_get_contents('../data/users.json'),true);//lo convierto a array
 
     // Filtrar usuarios para buscar el nombre de usuario
     $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($id) {
@@ -89,7 +89,7 @@ function getUserById($id)
     if (!empty($usuariosFiltrados)) {
         // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
         $usuarioEncontrado = reset($usuariosFiltrados);
-        return $usuarioEncontrado; //por ahora solo devuelvo el nombre
+        return json_encode($usuarioEncontrado); 
         
     } else {
         return [];
