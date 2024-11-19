@@ -89,6 +89,31 @@ function getUserById($id)
     if (!empty($usuariosFiltrados)) {
         // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
         $usuarioEncontrado = reset($usuariosFiltrados);
+        return $usuarioEncontrado; //por ahora solo devuelvo el nombre
+        
+    } else {
+        return [];
+    }
+}
+function getUserNameById($id)
+{
+    /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
+
+    if (!file_exists('../data/users.json')) {
+        return [];
+
+    }
+    $usuarios = json_decode(file_get_contents('../data/users.json'));//lo convierto a array
+
+    // Filtrar usuarios para buscar el nombre de usuario
+    $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($id) {
+        return $usuario['id'] === $id;
+    });
+
+    // Comprobar si hay usuarios filtrados
+    if (!empty($usuariosFiltrados)) {
+        // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
+        $usuarioEncontrado = reset($usuariosFiltrados);
         return $usuarioEncontrado['username']; //por ahora solo devuelvo el nombre
         
     } else {

@@ -19,7 +19,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     $_SESSION['LAST_ACTIVITY'] = time();
 }
 if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] != "user") {
+    if ($_SESSION['role'] != "user" &&  $_SESSION['role'] != "admin") {
         // Redireccionar a index.php
         header('Location: index.php');
         exit(); // Asegúrate de llamar a exit después de redirigir
