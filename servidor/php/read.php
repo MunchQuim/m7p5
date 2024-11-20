@@ -13,16 +13,15 @@ function readUsers()
 
 function getUser($username, $password)
 {
-
     if (!file_exists('../data/users.json')) {
         return [];
-
     }
     $usuarios = json_decode(file_get_contents('../data/users.json'),true);//lo convierto a array
-
     // Filtrar usuarios para buscar el nombre de usuario
     $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($username) {
+        echo $usuario['username'];
         return $usuario['username'] === $username;
+        
     });
 
     // Comprobar si hay usuarios filtrados
@@ -40,7 +39,7 @@ function getUser($username, $password)
     }
 }
 
-function getAdminTest($username, $password)
+/* function getAdminTest($username, $password)
 {
 
     if (!file_exists('../data/users.json')) {
@@ -68,18 +67,16 @@ function getAdminTest($username, $password)
     }
 
 
-}
+} */
 
-function getUserById($id)
+/* function getUserById($id)
 {
-    /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
 
     if (!file_exists('../data/users.json')) {
         return [];
 
     }
     $usuarios = json_decode(file_get_contents('../data/users.json'),true);//lo convierto a array
-
     // Filtrar usuarios para buscar el nombre de usuario
     $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($id) {
         return $usuario['id'] === $id;
@@ -94,7 +91,7 @@ function getUserById($id)
     } else {
         return [];
     }
-}
+} */
 function getUserNameById($id)
 {
     /* debe añadirse seguridad para evitar que cualquiera pueda acceder a este .php */
@@ -187,10 +184,6 @@ if (isset($_GET['emotion'])) {
     } else {
         echo json_encode(['error' => 'No se encontraron canciones para esta emoción']);
     }
-} else {
-    // Si no se proporciona emoción, responder con un error o con todas las canciones
-    header('Content-Type: application/json');
-    echo json_encode(['error' => 'Emoción no especificada']);
-}
+} 
 
 ?>

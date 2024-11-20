@@ -167,63 +167,6 @@ const loadSongs = async (pSrc, image) => {
 // radios
 
 //datos json radio hardcodeadas
-let radios = [{
-    "src": "https://20853.live.streamtheworld.com/CADENASERAAC.aac",
-    "canal": "Catalunya Radio",
-    "image": "../imgs/catRadio.png"
-}];
-async function enseñarRadios() {
-
-    let response = await fetch('http://172.17.131.175:3000/api/radios');
-    radios = await response.json();
-
-    console.log(radios['radios']);
-    let radioList = document.getElementById("radioList");
-
-    radios['radios'].forEach(radio => {
-        let radioDiv = document.createElement("div");
-        radioDiv.innerText = radio['tittle'];
-        radioDiv.setAttribute('data-index', radios['radios'].indexOf(radio))
-        radioDiv.addEventListener("click", () => {
-            ponerFoto("../imgs/radio.png");
-            loadRadios(radio['src']);
-        }, false)
-        radioList.appendChild(radioDiv);
-    });
-}
-
-const loadRadios = async (pSrc) => {
-    if (document.getElementById('posBtns')) {
-        document.getElementById('posBtns').remove();//quitamos los botones de la reproduccion de musica dejando el volumen.
-    }
-
-    Howler.unload();// lo destruimos (no podemos usar howler sino Howler) para que no se vayan sumando instancias
-    howler = new Howl({
-        src: pSrc,
-        autoplay: true,
-        html5: true,
-        volume: songVolume,
-        onplay: function () {
-            //Equilizer
-            analyser = Howler.ctx.createAnalyser();    //Proporciona acceso a la frecuencia y los datos de tiempo del audio que está siendo reproducido. 
-            bufferLength = analyser.frequencyBinCount; //Indica el número de muestras de datos que se obtendrán del audio.
-            dataArray = new Uint8Array(bufferLength);
-            loadEqualizer();
-            animateEqualizer('black');
-        },
-        onloaderror: function (id, err) {
-            console.error('Error al cargar la transmisión:', err);
-        },
-        onplayerror: function (id, err) {
-            console.error('Error al reproducir la transmisión:', err);
-        }
-    });
-
-
-
-}
-
-
 
 function loadEqualizer() {
     // Conexion del masterGain (el volumen maestro de Howler.js) con el analyzer, permitiendo que el ecualizador recoja datos del audio que se está reproduciendo.
@@ -240,36 +183,6 @@ function loadEqualizer() {
     console.log("cargado");
 }
 
-/* 
-function animateEqualizer() {
-
-    // Limpia el lienzo del canvas para pintar de nuevo
-    ctx.clearRect(0, 0, canvas.offsetWidth, canvas.height);
-
-    // Obtiene los datos de frecuencia del audio. Cada valor del arreglo representa la amplitud de una frecuencia específica del espectro de audio, que luego se usa para dibujar las barras.
-    analyser.getByteFrequencyData(dataArray);
-    console.log(bufferLength)
-    // Dibuja las barras del ecualizador
-    let barSpacing = 0; // Espaciado entre barras
-    let barWidth = (canvas.offsetWidth/bufferLength); // Calcula el ancho de cada barra
-    let barHeight;
-    // Recorre el array de datos de frecuencia y dibuja las barras
-    const maxBarHeight = canvas.offsetHeight; // Altura máxima deseada
-
-    for (let i = 0; i < bufferLength; i++) {
-        console.log(dataArray[i]);
-        // Normalizar y escalar el valor
-        barHeight = (dataArray[i] / 1000) * maxBarHeight; // Asumiendo que dataArray tiene valores entre 0 y 255
-        let x = i * (barWidth + barSpacing);
-        let y = canvas.height - barHeight;
-    
-        ctx.fillStyle = 'blue'; // Cambia el color de las barras según tu preferencia
-        // Pinta la barra actual
-        ctx.fillRect(x, y, barWidth, barHeight);
-    }
-    // Repite la animación
-    animationFrame = requestAnimationFrame(animateEqualizer);
-} */
 
 function animateEqualizer(color) {
     /* console.log(dataArray); */
@@ -588,15 +501,7 @@ function shuffle(array) {
     return array;
 }
 // cambio entre radio y canciones
-document.getElementById("playlistBtn").addEventListener("click", () => {
-    mostrarGrid(document.getElementById("songList"));
-    ocultar(document.getElementById("radioList"));
-}, false);
 
-document.getElementById("radioBtn").addEventListener("click", () => {
-    mostrarGrid(document.getElementById("radioList"));
-    ocultar(document.getElementById("songList"));
-}, false);
 
 //mostrar
 function mostrar(elemento) {
