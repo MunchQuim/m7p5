@@ -252,6 +252,18 @@ width: 200px;
     flex-grow: 1;
 }
 
+#logout-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff; /* Color del botón */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+#logout-button:hover {
+    background-color: #0056b3; /* Color al pasar el ratón */
+}
 /* para cambiar entre estados*/
 .oculto {
     display: none !important;

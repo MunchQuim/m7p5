@@ -43,7 +43,17 @@ if (isset($_SESSION['emotion'])) {
 </head>
 
 <body>
-    <h1 id="title">Howler.js</h1>
+<?php
+            if (isset($_SESSION['username'])) {
+                echo "<h1 id='title'> Bienvenido a Howler.js, " . htmlspecialchars($_SESSION['username']) . "!</h1>";
+                echo '<nav>
+                    <a href="logout.php" id="logout-button">Cerrar sesión</a>
+                  </nav>';
+            } else {
+                header('Location: index.php');
+                exit();
+            }
+            ?>
     <main>
         <div id="songContainer">
             <div id="imgCanContainer">

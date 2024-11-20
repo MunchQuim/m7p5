@@ -1,6 +1,5 @@
 <?php
-include("update.php");
-include("read.php");
+
 // Iniciar la sesión
 // Al inicio de cada página protegida, verifica la expiración de sesión
 
@@ -50,9 +49,7 @@ if (isset($_SESSION['role'])) {
                     <a href="logout.php" id="logout-button">Cerrar sesión</a>
                   </nav>';
             } else {
-                echo "<h1> Bienvenido! </h1>";
-                echo '<nav><a href="#" id="crear-sesion-link">Crear sesión</a>
-                 <a href="#" id="iniciar-sesion-link">Iniciar sesión</a></nav>';
+                
             }
             ?>
 
@@ -64,39 +61,35 @@ if (isset($_SESSION['role'])) {
         </div>
         <!-- cuerpo -->
         <h2>Selecciona tu estado de ánimo</h2>
-        <form method="POST">
+        <form method="POST" action = "update.php">
             <div class="dropdown">
                 <label for="mood">Estado de ánimo:</label>
                 <select name="mood" id="mood">
-                    <option value="feliz">Feliz</option>
-                    <option value="triste">Triste</option>
-                    <option value="relajado">Relajado</option>
-                    <option value="energético">Energético</option>
-                    <option value="energético">Estresado</option>
-                    <option value="energético">Inspirado</option>
+                    <option value="Feliz">Feliz</option>
+                    <option value="Triste">Triste</option>
+                    <option value="Relajado">Relajado</option>
+                    <option value="Energetico">Energético</option>
+                    <option value="Estresado">Estresado</option>
+                    <option value="Inspirado">Inspirado</option>
 
                 </select>
             </div>
             <button type="submit">Actualizar estado de ánimo</button>
         </form>
-      <?php $usuario = json_decode( getUserById($_SESSION["id"]),true) ?><!-- Ahora mismo getUserById no nos da un usuario -->
-        <!-- 2. hacer una consulta read.php a la funcion que corresponda para obtener todos los datos -->
-        <!-- 3. darle una acción al formulario a update.php enviandole los datos que emos recibido del read mas la emocion que hemos escojido -->
-         <?php updateUser($usuario["id"],  $usuario["username"], newPassword:$usuario["password"], $usuario["mail"], $usuario["role"], $newEmotions)   ?>
     </main>
 </body>
 
 
 <script>
-    function handleSubmit(event) {
+/*     function handleSubmit(event) {
         event.preventDefault(); // Evitar el envío predeterminado del formulario
         const emotion = document.getElementById("emotion").value;
         console.log("Estado de ánimo seleccionado:", emotion);
         // Aquí puedes llamar a tu función, como updateUser
         updateUser(1, 'userName', 'password', 'mail@example.com', 'user', emotion);
-    }
+    } */
 
-    function updateUser(id, username, password, mail, role, emotion) {
+    /*function updateUser(id, username, password, mail, role, emotion) {
         console.log(`Datos actualizados:
             ID: ${id}
             Nombre: ${username}
@@ -104,7 +97,7 @@ if (isset($_SESSION['role'])) {
             Correo: ${mail}
             Rol: ${role}
             Estado de ánimo: ${emotion}`);
-    }
+    }*/
 </script>
 
 
