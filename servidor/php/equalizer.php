@@ -71,12 +71,9 @@ if (isset($_SESSION['emotion'])) {
         </div>
         <div id="side">
             <div id="sideHeader">
-                <button id="playlistBtn">Playlist</button>
-                <button id="radioBtn">Radios</button>
             </div>
             <div id="sideMain">
                 <div id="songList" class="mostrado"></div>
-                <div id="radioList" class="oculto"></div>
             </div>
             <div id="sideFooter"></div>
         </div>

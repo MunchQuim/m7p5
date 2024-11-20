@@ -7,7 +7,7 @@ if(isset($_POST["mood"])) {
     session_start();
     
     updateMoodById($_SESSION['id'],$mood);
-    session_abort();
+    $_SESSION['emotion'] = $mood;
     header('Location: equalizer.php');
     exit();
     

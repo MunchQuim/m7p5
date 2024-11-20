@@ -277,11 +277,11 @@ width: 200px;
 }
 
 .pausa {
-    content: url("../imgs/pause.png");
+    content: url("../servidor/imgs/pause.png");
 }
 
 .reanudar {
-    content: url("../imgs/play.png");
+    content: url("../servidor/imgs/play.png");
 }
 
 
