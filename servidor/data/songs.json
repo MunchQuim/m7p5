@@ -1,43 +1,166 @@
-[{
-    "title": "Eye of the Tiger",
-    "artist": "Survivor",
-    "src": "../songs/EyeOfTheTiger.mp3",
-    "image": "../imgs/survivor.jpg",
-    "emotion": "Energico"
-},
-{
-    "title": "Acid rain",
-    "artist": "Avenged Sevenfold",
-    "src": "../songs/AcidRain.mp3",
-    "image": "../imgs/avengedSevenfold.jpg",
-    "emotion": "Triste"
+[
+    {
+        "title": "CALLAITA",
+        "artist": "Bad Bunny",
+        "src": "../songs/CALLAIA.mp3",
+        "image": "../imgs/bad.webp",
+        "emotion": "Triste"
+    }, {
+        "title": "AMORFODA",
+        "artist": "Bad Bunny",
+        "src": "../songs/AMORFODA.mp3",
+        "image": "../imgs/bad.webp",
+        "emotion": "Triste"
+    },{
+        "title": "De 100 A 0",
+        "artist": "MTZ Manuel Turizo",
+        "src": "../songs/De 100 A 0 - MTZ Manuel Turizo.mp3",
+        "image": "../imgs/manuel.jpg",
+        "emotion": "Inspirado"
+    }, {
+        "title": "ELLA BAILA SOLA",
+        "artist": "Peso Pluma",
+        "src": "../songs/ELLA BAILA SOLA - Peso Pluma.mp3",
+        "image": "../imgs/pesopluma.webp",
+        "emotion": "Estresado"
+    }, {
+        "title": "Éxtasis",
+        "artist": "MTZ Manuel Turizo",
+        "src": "../songs/Éxtasis - MTZ Manuel Turizo.mp3",
+        "image": "../imgs/manuel.jpgg",
+        "emotion": "Inspirado"
+    }, {
+        "title": "CHORRITO PA LAS ANIMAS",
+        "artist": "Feid",
+        "src": "../songs/Feid - CHORRITO PA LAS ANIMAS.mp3",
+        "image": "../imgs/feid.jfif",
+        "emotion": "Energético"
+    }, {
+        "title": "Feliz Cumpleaños Ferxxo",
+        "artist": "Feid - ",
+        "src": "../songs/Feid - Feliz Cumpleaños Ferxxo.mp3",
+        "image": "../imgs/feid.jfif",
+        "emotion": "Energético"
+    }, {
+        "title": "Normal",
+        "artist": "Feid",
+        "src": "../songs/Feid - Normal.mp3",
+        "image": "../imgs/feid.jfif",
+        "emotion": "Energético"
+    }, {
+        "title": "VACAXIONES",
+        "artist": "Feid",
+        "src": "../songs/Feid - VACAXIONES.mp3",
+        "image": "../imgs/feid.jfif",
+        "emotion": "Energético"
+    }, {
+        "title": "FRIKI",
+        "artist": "Feid, KAROL G",
+        "src": "../songs/Feid, KAROL G - FRIKI.mp3",
+        "image": "../imgs/feid.jfif",
+        "emotion": "Energético"
+    }, {
+        "title": "La Bachata",
+        "artist": "MTZ Manuel Turizo",
+        "src": "../songs/La Bachata - MTZ Manuel Turizo.mp3",
+        "image": "../imgs/manuel.jpg",
+        "emotion": "Inspirado"
+    }, {
+        "title": "Vino tinto",
+        "artist": "Peso Pluma",
+        "src": "../songs/Natanael Cano x Peso Pluma x Gabito Ballesteros.mp3",
+        "image": "../imgs/pesopluma.webp",
+        "emotion": "Estresado"
+    }, {
+        "title": "El Azul",
+        "artist": "Peso Pluma - ",
+        "src": "../songs/Peso Pluma - El Azul.mp3",
+        "image": "../imgs/pesopluma.webp",
+        "emotion": "Estresado"
+    }, {
+        "title": "Por Las Noches",
+        "artist": "Peso Pluma",
+        "src": "../songs/Peso Pluma - Por Las Noches.mp3",
+        "image": "../imgs/pesopluma.webp",
+        "emotion": "Estresado"
+    }, {
+        "title": "Aquel Nap ZzZz",
+        "artist": "Rauw Alejandro",
+        "src": "../songs/Rauw Alejandro - Aquel Nap ZzZz.mp3",
+        "image": "../imgs/raw.jpg",
+        "emotion": "Relajado"
+    }, {
+        "title": "Cosa Guapa",
+        "artist": "Rauw Alejandro",
+        "src": "../songs/Rauw Alejandro - Cosa Guapa.mp3",
+        "image": "../imgs/raw.jpg",
+        "emotion": "Relajado"
+    }, {
+        "title": "MUSEO",
+        "artist": "Rauw Alejandro",
+        "src": "../songs/Rauw Alejandro - MUSEO.mp3",
+        "image": "../imgs/raw.jpg",
+        "emotion": "Relajado"
+    }, {
+        "title": "SOLO DE MÍ",
+        "artist": "Bad Bunny",
+        "src": "../songs/SOLO DE MÍ.mp3",
+        "image": "../imgs/bad.webp",
+        "emotion": "Triste"
+    }, {
+        "title": "Un Verano Sin Ti",
+        "artist": "Bad Bunny",
+        "src": "../songs/Un Verano Sin Ti.mp3",
+        "image": "../imgs/bad.webp",
+        "emotion": "Triste"
+    }, {
+        "title": "Vacío",
+        "artist": "MTZ Manuel Turizo",
+        "src": "../songs/Vacío - MTZ Manuel Turizo.mp3",
+        "image": "../imgs/manuel.jpg",
+        "emotion": "Inspirado"
+    }, {
+        "title": "VERDE MENTA",
+        "artist": "Rauw Alejandro",
+        "src": "../songs/VERDE MENTA - Rauw Alejandro.mp3",
+        "image": "../imgs/raw.jpg",
+        "emotion": "Relajado"
+    }, {
+        "title": "VETE",
+        "artist": "Bad Bunny",
+        "src": "../songs/VETE.mp3",
+        "image": "../imgs/bad.webp",
+        "emotion": "Triste"
+    }, {
+        "title": "Te Siento",
+        "artist": "Wisin & Yandel",
+        "src": "../songs/Wisin & Yandel - Te Siento.mp3",
+        "image": "../imgs/yandel.jpg",
+        "emotion": "Feliz"
+    }, {
+        "title": "Encantadora",
+        "artist": "Yandel",
+        "src": "../songs/Yandel - Encantadora.mp3",
+        "image": "../imgs/yandel.jpg",
+        "emotion": "Feliz"
+    }, {
+        "title": "Mi Religión",
+        "artist": "Yandel",
+        "src": "../songs/Yandel - Mi Religión.mp3",
+        "image": "../imgs/yandel.jpg",
+        "emotion": "Feliz"
+    }, {
+        "title": "Nunca Me Olvides",
+        "artist": "Yandel",
+        "src": "../songs/Yandel - Nunca Me Olvides.mp3",
+        "image": "../imgs/yandel.jpg",
+        "emotion": "Feliz"
+    }, {
+        "title": "La Bebe",
+        "artist": "Peso Pluma",
+        "src": "../songs/Yng Lvcas & Peso Pluma - La Bebe.mp3",
+        "image": "../imgs/survivor.jpg",
+        "emotion": "Estresado"
+    }
     
-},
-{
-    "title": "Here comes the sun",
-    "artist": "Beatles",
-    "src": "../songs/HereComesTheSun.mp3",
-    "image": "../imgs/beatles.jpg",
-    "emotion": "Feliz"
-},
-{
-    "title": "Clair de lune",
-    "artist": "Debussy",
-    "src": "../songs/ClairDeLune.mp3",
-    "image": "../imgs/debussy.jpg",
-    "emotion": "Relajado"
-},
-{
-    "title": "The sound of silence",
-    "artist": "Disturbed",
-    "src": "../songs/TheSoundOfSilence.mp3",
-    "image": "../imgs/disturbed.jpg",
-    "emotion": "Estresado"
-},
-{
-    "title": "On Top of the World",
-    "artist": "Imagine Dragons",
-    "src": "../songs/OnTopOfTheWorld.mp3",
-    "image": "../imgs/imagineDragons.jpg",
-    "emotion": "Inspirado"
-}]
+]
