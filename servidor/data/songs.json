@@ -27,7 +27,7 @@
         "title": "Éxtasis",
         "artist": "MTZ Manuel Turizo",
         "src": "../songs/Éxtasis - MTZ Manuel Turizo.mp3",
-        "image": "../imgs/manuel.jpgg",
+        "image": "../imgs/manuel.jpg",
         "emotion": "Inspirado"
     }, {
         "title": "CHORRITO PA LAS ANIMAS",
@@ -161,6 +161,48 @@
         "src": "../songs/Yng Lvcas & Peso Pluma - La Bebe.mp3",
         "image": "../imgs/survivor.jpg",
         "emotion": "Estresado"
+    },{
+        "title": "Eye of the Tiger",
+        "artist": "Survivor",
+        "src": "../songs/EyeOfTheTiger.mp3",
+        "image": "../imgs/survivor.jpg",
+        "emotion": "Energico"
+    },
+    {
+        "title": "Acid rain",
+        "artist": "Avenged Sevenfold",
+        "src": "../songs/AcidRain.mp3",
+        "image": "../imgs/avengedSevenfold.jpg",
+        "emotion": "Triste"
+        
+    },
+    {
+        "title": "Here comes the sun",
+        "artist": "Beatles",
+        "src": "../songs/HereComesTheSun.mp3",
+        "image": "../imgs/beatles.jpg",
+        "emotion": "Feliz"
+    },
+    {
+        "title": "Clair de lune",
+        "artist": "Debussy",
+        "src": "../songs/ClairDeLune.mp3",
+        "image": "../imgs/debussy.jpg",
+        "emotion": "Relajado"
+    },
+    {
+        "title": "The sound of silence",
+        "artist": "Disturbed",
+        "src": "../songs/TheSoundOfSilence.mp3",
+        "image": "../imgs/disturbed.jpg",
+        "emotion": "Estresado"
+    },
+    {
+        "title": "On Top of the World",
+        "artist": "Imagine Dragons",
+        "src": "../songs/OnTopOfTheWorld.mp3",
+        "image": "../imgs/imagineDragons.jpg",
+        "emotion": "Inspirado"
     }
     
 ]
