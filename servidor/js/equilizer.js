@@ -27,7 +27,7 @@ let ctx = canvas.getContext('2d');
 async function enseñarCanciones(emotion) {
 
     try {
-        let response = await fetch(`http://localhost/practica5/servidor/php/read.php?emotion=${encodeURIComponent(emotion)}`);
+        let response = await fetch(`http://localhost/practica5/servidor/php/read.php?emotion=${encodeURIComponent(emotion)}&action=songs`); // le doy una emocion y una accion para que el crud filtre la solicitud
 
         // Verificar si la respuesta fue exitosa (status HTTP 200)
         if (!response.ok) {

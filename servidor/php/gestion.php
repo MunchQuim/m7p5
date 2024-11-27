@@ -24,7 +24,7 @@ if (isset($_SESSION['role'])) {
         // Redireccionar a index.php
         header('Location: index.php');
         exit(); // Asegúrate de llamar a exit después de redirigir
-    } 
+    }
 }
 
 
@@ -49,23 +49,24 @@ if (isset($_SESSION['role'])) {
             if (isset($_SESSION['username'])) {
                 echo "<h1> Bienvenido, " . htmlspecialchars($_SESSION['username']) . "!</h1>";
                 echo '<nav>
+                    <a href="user.php" id="logout-button">Gestion Usuarios</a>
                     <a href="logout.php" id="logout-button">Cerrar sesión</a>
                   </nav>';
             } else {
-                echo "<h1> Bienvenido! </h1>";
-                echo '<nav><a href="#" id="crear-sesion-link">Crear sesión</a>
-                 <a href="#" id="iniciar-sesion-link">Iniciar sesión</a></nav>';
+                header('Location: index.php');
+                exit(); // Asegúrate de llamar a exit después de redirigir
             }
             ?>
-            
+
 
         </div>
     </header>
     <main>
         <div id="form-container" class="hidden">
+
         </div>
-        <!-- cuerpo -->
-         
+        
+
     </main>
 </body>
 <script>

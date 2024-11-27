@@ -1,4 +1,17 @@
 <?php
+session_start(); // Iniciar la sesión para verificar
+if (isset($_SESSION['LAST_ACTIVITY']) && isset($_SESSION['role'])) {
+    if (time() - $_SESSION['LAST_ACTIVITY'] <= 1800 && $_SESSION['role'] == "admin") { // si han pasado mas de 1800 segundos desde la ultima conexion, se destruye la sesion
+        $_SESSION['LAST_ACTIVITY'] = time();
+    }
+
+    if(isset($_POST['id'])){
+        $id = $_POST['id'];
+        deleteUser($id);
+    }
+
+}
+
 // función para eliminar un usuario por ID
 function deleteUser($id) {
     if (!file_exists('../data/users.json')) {
@@ -21,5 +34,6 @@ function deleteUser($id) {
     echo "Usuario no encontrado.";
 }
 }
+
 
 ?>
