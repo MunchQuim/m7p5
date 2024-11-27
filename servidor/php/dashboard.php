@@ -68,7 +68,7 @@ if (isset($_SESSION['role'])) {
                     <option value="Feliz">Feliz</option>
                     <option value="Triste">Triste</option>
                     <option value="Relajado">Relajado</option>
-                    <option value="Energetico">Energético</option>
+                    <option value="Energico">Enérgico</option>
                     <option value="Estresado">Estresado</option>
                     <option value="Inspirado">Inspirado</option>
 

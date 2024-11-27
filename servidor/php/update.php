@@ -11,7 +11,14 @@ if(isset($_POST["mood"])) {
     header('Location: equalizer.php');
     exit();
     
-}
+}if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $data = json_decode(file_get_contents("php://input"), true);
+    if($data){
+        updateUser($data["id"],$data["username"],$data["password"],$data["mail"],$data["role"],$data["emotion"]);
+
+    }
+    }
+
 function updateMoodById($id, $newEmotions) {
     if (!file_exists('../data/users.json')) {
         echo "El archivo de datos no existe.";
