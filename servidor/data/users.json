@@ -8,11 +8,11 @@
         "emotion": ""
     },
     {
-        "id": "673b669e1afc0",
+        "id": "67488d7683b37",
         "username": "user",
-        "password": "$2y$10$v3v41xwIKP4atFh52Vm7oO9FhTMZvpNxBQ2qv7khv9.O9EkxegW3m",
-        "mail": "user@gmail.com",
+        "password": "$2y$10$d15Dw13IhIhVhW\/mTnvRz.cjDtt2dOZRFHw0w0udeG.YfpwBglTXq",
+        "mail": "student@example.com",
         "role": "user",
-        "emotion": "Feliz"
+        "emotion": "Energico"
     }
 ]

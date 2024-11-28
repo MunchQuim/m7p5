@@ -19,7 +19,7 @@ function getUser($username, $password)
     $usuarios = json_decode(file_get_contents('../data/users.json'), true);//lo convierto a array
     // Filtrar usuarios para buscar el nombre de usuario
     $usuariosFiltrados = array_filter($usuarios, function ($usuario) use ($username) {
-        echo $usuario['username'];
+        //echo $usuario['username'];
         return $usuario['username'] === $username;
 
     });
@@ -28,6 +28,7 @@ function getUser($username, $password)
     if (!empty($usuariosFiltrados)) {
         // Obtener el primer usuario encontrado (asumiendo que los usernames son únicos)
         $usuarioEncontrado = reset($usuariosFiltrados);
+
         if (password_verify($password, $usuarioEncontrado['password'])) {
             return $usuarioEncontrado;
         } else {
